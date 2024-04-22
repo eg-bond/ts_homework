@@ -8,9 +8,9 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "dev": "yarn run nodemon",
+    "task_1": "yarn run nodemon ./src/task_1.ts",
     "build": "yarn run rimraf ./build && yarn run tsc",
-    "start": "node ./build/index.js"
+    "start:1": "node ./build/task_1.js"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
