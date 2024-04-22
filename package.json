@@ -1,0 +1,22 @@
+{
+  "name": "ts_homework",
+  "version": "1.0.0",
+  "description": "typescript homework",
+  "author": "eg-bond <eg-bond@yandex.ru>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "dev": "yarn run nodemon",
+    "build": "yarn run rimraf ./build && yarn run tsc",
+    "start": "node ./build/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}
