@@ -8,16 +8,42 @@ type DataItemT = {
 
 type UnnormalizedDataT = Array<DataItemT>
 
-type NormalizedDataT = {
-  byId: { [key: string]: DataItemT }
-  allIds: string[]
-}
-
 const normalizeData = (
   unnormalizedData: UnnormalizedDataT
 ): NormalizedDataT => {
   const normalizedData = unnormalizedData.reduce(
     (acc: NormalizedDataT, item: DataItemT): NormalizedDataT => {
+      acc.byId[item.id] = item
+      acc.allIds.push(item.id)
+      return acc
+    },
+    { byId: {}, allIds: [] }
+  )
+  return normalizedData
+}
+
+type NormalizedDataT = {
+  byId: { [key: string]: DataItemT }
+  allIds: string[]
+}
+
+const normalizeDataGeneric = <T extends { id: string }>(
+  unnormalizedData: Array<T>
+): {
+  byId: { [key: string]: T }
+  allIds: string[]
+} => {
+  const normalizedData = unnormalizedData.reduce(
+    (
+      acc: {
+        byId: { [key: string]: T }
+        allIds: string[]
+      },
+      item: T
+    ): {
+      byId: { [key: string]: T }
+      allIds: string[]
+    } => {
       acc.byId[item.id] = item
       acc.allIds.push(item.id)
       return acc
