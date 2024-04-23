@@ -10,9 +10,11 @@
   "scripts": {
     "task:1": "yarn run nodemon ./src/task_1.ts",
     "task:2": "yarn run nodemon ./src/task_2/index.ts",
+    "task:3": "yarn run nodemon ./src/task_3.ts",
     "build": "yarn run rimraf ./build && yarn run tsc",
     "start:1": "node ./build/task_1.js",
-    "start:2": "node ./build/task_2/index.js"
+    "start:2": "node ./build/task_2/index.js",
+    "start:3": "node ./build/task_3.js"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
