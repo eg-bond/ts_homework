@@ -1,4 +1,4 @@
-import { posts } from './data.js'
+import { posts1, posts2 } from './data.js'
 
 // version with predefined type of data ---------------------------------------
 type DataItemT = {
@@ -13,15 +13,14 @@ type NormalizedDataT = {
 }
 
 const normalizeData = (unnormalizedData: Array<DataItemT>): NormalizedDataT => {
-  const normalizedData = unnormalizedData.reduce(
-    (acc: NormalizedDataT, item: DataItemT): NormalizedDataT => {
-      acc.byId[item.id] = item
-      acc.allIds.push(item.id)
-      return acc
-    },
-    { byId: {}, allIds: [] }
-  )
-  return normalizedData
+  let result: NormalizedDataT = { byId: {}, allIds: [] }
+
+  unnormalizedData.forEach((item: DataItemT): void => {
+    result.byId[item.id] = item
+    result.allIds.push(item.id)
+  })
+
+  return result
 }
 // ---------------------------------------------------------------------------
 
@@ -34,18 +33,37 @@ type NormalizedDataGenT<T> = {
 const normalizeDataGen = <T extends { id: string }>(
   unnormalizedData: Array<T>
 ): NormalizedDataGenT<T> => {
-  const normalizedData = unnormalizedData.reduce(
-    (acc: NormalizedDataGenT<T>, item: T): NormalizedDataGenT<T> => {
-      acc.byId[item.id] = item
-      acc.allIds.push(item.id)
-      return acc
-    },
-    { byId: {}, allIds: [] }
-  )
-  return normalizedData
+  let result: NormalizedDataGenT<T> = { byId: {}, allIds: [] }
+
+  unnormalizedData.forEach((item: T): void => {
+    result.byId[item.id] = item
+    result.allIds.push(item.id)
+  })
+
+  return result
 }
 // ---------------------------------------------------------------------------
 
 // test logs
-console.log(normalizeData(posts))
-console.log(normalizeDataGen(posts))
+console.log('predefined version: ', normalizeData(posts1))
+/**
+ * {
+ *    byId: {
+ *      62e69d5a5458aac0ed320b35: { id: '...', title: '...', body: '...' },
+ *      62e69d5a5458aac0ed320b1c: { id: '...', title: '...', body: '...' },
+ *      ...
+ *    },
+ *    allIds: ['62e69d5a5458aac0ed320b35', '62e69d5a5458aac0ed320b1c', ...]
+ * }
+ */
+console.log('generic version: ', normalizeDataGen(posts2))
+/**
+ * {
+ *    byId: {
+ *      62e69d5a5458aac0ed320b35: { id: '...', title?: '...', body?: '...', somethingElse?: '...' },
+ *      62e69d5a5458aac0ed320b1c: { id: '...', title?: '...', body?: '...', somethingElse?: '...' },
+ *      ...
+ *    },
+ *    allIds: ['62e69d5a5458aac0ed320b35', '62e69d5a5458aac0ed320b1c', ...]
+ * }
+ */

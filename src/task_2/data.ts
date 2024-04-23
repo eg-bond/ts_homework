@@ -1,4 +1,4 @@
-export const posts = [
+export const posts1 = [
   {
     id: '62e69d5a5458aac0ed320b35',
     title: 'id labore ex et quam laborum',
@@ -33,5 +33,25 @@ export const posts = [
     id: '62e69d5a5458aac0ed320b25',
     title: 'repellat consequatur praesentium vel minus molestias voluptatum',
     body: 'maiores sed dolores similique labore et inventore etquasi temporibus esse sunt id eteos voluptatem aliquamratione corporis molestiae mollitia quia et magnam dolor',
+  },
+]
+
+export const posts2 = [
+  {
+    id: '62e69d5a5458aac0ed320b40',
+  },
+  {
+    id: '62e69d5a5458aac0ed320b35',
+    title: 'id labore ex et quam laborum',
+  },
+  {
+    id: '62e69d5a5458aac0ed320b19',
+    body: 'doloribus at sed quis culpa deserunt consectetur qui praesentiumaccusamus fugiat dictavoluptatem rerum ut voluptate autemvoluptatem repellendus aspernatur dolorem in',
+  },
+  {
+    id: '62e69d5a5458aac0ed320b25',
+    title: 'repellat consequatur praesentium vel minus molestias voluptatum',
+    body: 'maiores sed dolores similique labore et inventore etquasi temporibus esse sunt id eteos voluptatem aliquamratione corporis molestiae mollitia quia et magnam dolor',
+    somethingElse: 'something else',
   },
 ]
