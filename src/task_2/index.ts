@@ -1,3 +1,4 @@
+import chalk from 'chalk'
 import { posts1, posts2 } from './data.js'
 
 // version with predefined type of data ---------------------------------------
@@ -45,7 +46,7 @@ const normalizeDataGen = <T extends { id: string }>(
 // ---------------------------------------------------------------------------
 
 // test logs
-console.log('predefined version: ', normalizeData(posts1))
+console.log(chalk.bgRed('predefined version: '), normalizeData(posts1))
 /**
  * {
  *    byId: {
@@ -56,7 +57,7 @@ console.log('predefined version: ', normalizeData(posts1))
  *    allIds: ['62e69d5a5458aac0ed320b35', '62e69d5a5458aac0ed320b1c', ...]
  * }
  */
-console.log('generic version: ', normalizeDataGen(posts2))
+console.log(chalk.bgBlue('generic version: '), normalizeDataGen(posts2))
 /**
  * {
  *    byId: {
